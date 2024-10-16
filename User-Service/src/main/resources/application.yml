@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/JunitTestCase?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: Password@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: User-Service
