@@ -8,7 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+
+import org.mockito.stubbing.Answer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -37,8 +41,18 @@ public class UserControllerTest {
         ResponseEntity<?> response = userController.register(user);
 
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-//        Assertions.assertEquals(user,response.getBody());
     }
 
+    @Test
+    public void testGetUserDetails(){
+        User user =new User();
+        user.setEmail("ilyas78874@gmail.com");
+        user.setName("Test User");
 
+        when(userService.getUserDetails(anyString())).thenReturn(user);
+
+        ResponseEntity<?> response = userController.getUserDetails(user.getEmail());
+        Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
+        Assertions.assertEquals(user,response.getBody());
+    }
 }
