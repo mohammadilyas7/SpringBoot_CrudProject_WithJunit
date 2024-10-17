@@ -55,4 +55,8 @@ public class UserControllerTest {
         Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
         Assertions.assertEquals(user,response.getBody());
     }
+    @Test
+    public void testGetAllUsers(){
+
+    }
 }

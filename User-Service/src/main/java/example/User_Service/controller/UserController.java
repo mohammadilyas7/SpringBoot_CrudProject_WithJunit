@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/disPlayAllUser")
-    public ResponseEntity<?> disPlayAllUser(){
-        return new ResponseEntity<>(userService.disPlayAllUser(),HttpStatus.OK);
+    public ResponseEntity<?> getAllUsers(){
+        return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
     }
 
     @PutMapping("/updateMobile/{email}/{number}")

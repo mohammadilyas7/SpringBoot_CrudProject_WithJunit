@@ -22,7 +22,7 @@ public class UserService {
         return user;
     }
 
-    public List<User> disPlayAllUser() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
