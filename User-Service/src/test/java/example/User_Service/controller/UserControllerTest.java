@@ -16,6 +16,9 @@ import org.mockito.stubbing.Answer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
 
 public class UserControllerTest {
@@ -57,6 +60,13 @@ public class UserControllerTest {
     }
     @Test
     public void testGetAllUsers(){
+        List<User> userList = new ArrayList<>();
+        userList.add(new User());
 
+        when(userService.getAllUsers()).thenReturn(userList);
+
+        ResponseEntity<?> response = userController.getAllUsers();
+        Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
+        Assertions.assertEquals(userList,response.getBody());
     }
 }
