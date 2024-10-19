@@ -28,8 +28,8 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
     }
 
-    @PutMapping("/updateMobile/{email}/{number}")
-    public ResponseEntity<?> updateMobile(@PathVariable String email,@PathVariable long number){
-        return new ResponseEntity<>(userService.updateMobile(email,number),HttpStatus.CREATED);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String id){
+        return new ResponseEntity<>(userService.deleteUser(id),HttpStatus.NO_CONTENT);
     }
 }

@@ -4,22 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
+@Document
 public class User {
     private String name;
     @Id
     private String email;
-    private long number;
-//    private String gender;
-//    private String password;
-
+    private String password;
     public String getName() {
         return name;
     }
@@ -36,27 +28,11 @@ public class User {
         this.email = email;
     }
 
-    public long getNumber() {
-        return number;
+    public String getPassword() {
+        return password;
     }
 
-    public void setNumber(long number) {
-        this.number = number;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-//    public String getGender() {
-//        return gender;
-//    }
-//
-//    public void setGender(String gender) {
-//        this.gender = gender;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 }

@@ -9,19 +9,24 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static java.nio.file.Files.delete;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
 
-import org.mockito.stubbing.Answer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class UserControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
     @InjectMocks
     private UserController userController;
 
@@ -69,4 +74,13 @@ public class UserControllerTest {
         Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
         Assertions.assertEquals(userList,response.getBody());
     }
+    @Test
+    public void testDeleteUser() throws Exception {
+        String id = "id";
+        ResponseEntity<?> response = userController.deleteUser(id);
+        Assertions.assertEquals(HttpStatus.NO_CONTENT,response.getStatusCode());
+    }
+
+
+
 }

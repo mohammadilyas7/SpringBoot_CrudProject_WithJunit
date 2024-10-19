@@ -11,6 +11,7 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+
     public String register(User user){
         userRepository.save(user);
         return "User Successfully Register";
@@ -18,7 +19,7 @@ public class UserService {
 
     public User getUserDetails(String email) {
         User user = userRepository.findById(email).get();
-        System.out.println(user);
+        System.out.println();
         return user;
     }
 
@@ -26,11 +27,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public String updateMobile(String email, long number){
-        User user = userRepository.findById(email).orElse(null);
-        if (user != null){
-            user.setNumber(number);
-        }
-        return "Mobile number is update";
+    public String deleteUser(String id) {
+       userRepository.deleteById(id);
+       return "User Delete";
     }
 }
