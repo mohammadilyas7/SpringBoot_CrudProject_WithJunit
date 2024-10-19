@@ -8,8 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+import static com.mongodb.internal.connection.tlschannel.util.Util.assertTrue;
 import static org.bson.assertions.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -49,5 +53,14 @@ public class UserServiceTest {
         assertNotNull(result);
         assertEquals("Test User", result.getName());
         assertEquals(email, result.getEmail());
+    }
+    @Test
+    public void testGetAllUsers(){
+        when(userRepository.findAll()).thenReturn(List.of());
+
+        List<User> result = userService.getAllUsers();
+
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
     }
 }
