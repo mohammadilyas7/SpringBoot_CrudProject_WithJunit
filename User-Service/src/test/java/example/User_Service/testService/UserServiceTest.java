@@ -1,18 +1,17 @@
-package example.User_Service.controller.testService;
+package example.User_Service.testService;
 
 import example.User_Service.model.User;
 import example.User_Service.repository.UserRepository;
 import example.User_Service.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import static com.mongodb.internal.connection.tlschannel.util.Util.assertTrue;
 import static org.bson.assertions.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
